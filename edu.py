@@ -14,7 +14,9 @@ if password != "jdsprinting123456":   # example
 
 
 # --- Setup ---
-os.makedirs("images_db", exist_ok=True)
+if not os.path.exists("images_db"):
+    st.error("❌ images_db folder not found. Make sure it's included in the repository.")
+    st.stop()
 model = SentenceTransformer("clip-ViT-B-32")
 
 # --- Load existing embeddings ---
